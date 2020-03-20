@@ -1,0 +1,31 @@
+
+
+ <h2>Kies een interessant boek!</h2>
+        <section class="parent" >
+          <div>
+            
+            <img class="avatar" src="./images/boekje/happy.png" alt="Booky">
+            <blockquote>"Wat een onderwerpen zeg!"</blockquote>
+ 
+          </div>
+<p>
+"Een onderwerp vormt de basis van jouw werkstuk. Kies een onderwerp die bij jou past. Vind je het bijvoorbeeld leuk om films te kijken met ridders? Kijk dan eens naar geschiedenis!"
+</p>
+      </section>
+
+      <main class="grid">
+
+      {{#each subjects}}
+       <a href=/{{this}}>
+        <article id="{{this}}">
+        <h2>{{this}}</h2>
+        </article></a>
+      {{/each}}
+     </main>
+
+
+
+
+
+<script>
+</script>
