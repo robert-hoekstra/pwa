@@ -11,6 +11,12 @@ var hbs = require('express-hbs');
 
 var app = express();
 
+
+var compression = require('compression')
+var express = require('express')
+var app = express()
+app.use(compression())
+
 // Use `.hbs` for extensions and find partials in `views/partials`.
 app.engine('hbs', hbs.express4({
   partialsDir: __dirname + '/views/partials'
@@ -25,7 +31,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

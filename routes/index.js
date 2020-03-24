@@ -7,13 +7,17 @@ router.get('/', function(req, res, next) {
   res.render('layouts/index', { title: 'Booky' });
 });
 
+router.get('/mijninstellingen', function(req, res, next) {
+  res.render('layouts/mijninstellingen', { title: req.params.title });
+});
+
+router.get('/hoemaakikeenwerkstuk', function(req, res, next) {
+  res.render('layouts/help', { title: req.params.title });
+});
+
 router.get('/mijnwerkstukken', function(req, res, next) {
   res.render('layouts/mijnwerkstukken', { title: req.params.title });
-
-  next()
-
-
-},
+}, 
 
 function (req, res, next) {
 

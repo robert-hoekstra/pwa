@@ -6,6 +6,7 @@ const precacheResources = [
   '/stylesheet/main.css',
   '/javascript',
   '/images/boekje/happy.png',
+  '/images/logo/logo.66b1d35.png',
   '/mijnwerkstukken',
   '/hoemaakikeenwerkstuk',
   '/instellingen',
