@@ -1,3 +1,4 @@
+require('dotenv').config()
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -8,6 +9,9 @@ const usersRouter = require('./routes/users');
 const hbs = require('express-hbs');
 const compression = require('compression')
 const app = express()
+
+const port = process.env.PORT || 3500
+
 app.use(compression())
 
 // Use `.hbs` for extensions and find partials in `views/partials`.
@@ -44,7 +48,9 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-app.listen(3500)
+ // Nick 
+app.listen(port, () => {
+  console.log(`Dev app listening on port: ${port}`)
+})
 
 module.exports = app;
