@@ -29,6 +29,5 @@
     "gulp-clean-css": "^4.3.0",
     "gulp-concat": "^2.6.1",
     "gulp-uglify": "^3.0.2",
-    "live": "nodemon server.js"
   }
 }
