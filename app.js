@@ -5,12 +5,11 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
 const hbs = require('express-hbs');
 const compression = require('compression')
 const app = express()
 
-const port = process.env.PORT || 3500
+// const port = process.env.PORT || 3500
 
 app.use(compression())
 
@@ -48,8 +47,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
  // Nick 
-app.listen(port, () => {
-  console.log(`Dev app listening on port: ${port}`)
-})
+// app.listen(port, () => {
+//   console.log(`Dev app listening on port: ${port}`)
+// })
 
 module.exports = app;
