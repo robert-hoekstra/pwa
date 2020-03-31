@@ -34,7 +34,7 @@ gulp.task("scripts", function() {
     .src("public/js/*.js")
     .pipe(concat("main.js"))
     .pipe(uglify())
-    .pipe(gulp.dest("dist/js"));
+    .pipe(gulp.dest("dist/js"))
 });
 
 // Minify CSS en export naar dist
