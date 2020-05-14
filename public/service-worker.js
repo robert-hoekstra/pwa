@@ -32,3 +32,6 @@
 //       })
 //     );
 // });
+
+
+//Service worker now being made by gulp

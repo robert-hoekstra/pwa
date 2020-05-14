@@ -35,3 +35,15 @@ Zorg ervoor dat npm en node geinstalleerd is op jouw device!
 ### Node & NPM Installeren
 [node](https://nodejs.org/en/)
 [npm](https://docs.npmjs.com/cli/install)
+
+
+### Changes as of may
+* Added sw-precache to Gulp
+* Service worker is now being created through gulp
+* New filetypes precached: html, js, css, jpg, png, ,gif,json
+* Add Defer to script. Moved script to head
+* Redeployed to Heroku
+* removed folders from cache
+* Add Async to gulp parallel tasks
+* Removed SpeechJS (not allowed anymore)
+* Add new lighthouse audit

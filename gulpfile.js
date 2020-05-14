@@ -6,6 +6,7 @@ const imageMin = require("gulp-imagemin");
 const uglify = require("gulp-uglify");
 const concat = require("gulp-concat");
 const cleanCSS = require('gulp-clean-css');
+const htmlmin = require('gulp-htmlmin');
 
 
 // Message Logging
@@ -20,6 +21,12 @@ gulp.task("imageMin", () =>
     .pipe(imageMin())
     .pipe(gulp.dest("dist/images"))
 );
+
+gulp.task('minify', () => {
+  return gulp.src('public/*.html')
+    .pipe(htmlmin({ collapseWhitespace: true }))
+    .pipe(gulp.dest('dist'));
+});
 
 // Kopieer alle html bestanden naar de dist folder
 gulp.task("copyHTML", async function() {
