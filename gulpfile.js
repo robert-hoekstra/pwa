@@ -9,7 +9,7 @@ const cleanCSS = require('gulp-clean-css');
 
 
 // Message Logging
-gulp.task("message", function() {
+gulp.task("message", async function() {
   return console.log("Gulp is running...");
 });
 
@@ -22,20 +22,28 @@ gulp.task("imageMin", () =>
 );
 
 // Kopieer alle html bestanden naar de dist folder
-gulp.task("copyHTML", function() {
+gulp.task("copyHTML", async function() {
   gulp
   .src("public/*.html")
   .pipe(gulp.dest("dist"));
 });
 
 // Compile JavaScript. Javascript bestanden concatenaten en minifyen, en export naar dist
-gulp.task("scripts", function() {
+gulp.task("scripts", async function() {
   gulp
     .src("public/js/*.js")
     .pipe(concat("main.js"))
     .pipe(uglify())
     .pipe(gulp.dest("dist/js"))
 });
+
+gulp.task("service-worker", async function(){
+  gulp 
+    .src("public/service-worker.js")
+    .pipe(uglify())
+    .pipe(gulp.dest("dist"))
+})
+
 
 // Minify CSS en export naar dist
 gulp.task('minify-css', () => {
@@ -44,12 +52,27 @@ gulp.task('minify-css', () => {
       .pipe(gulp.dest('dist/stylesheet'));
   });
 
+  gulp.task('generate-service-worker', async function(callback) {
+    var path = require('path');
+    var swPrecache = require('sw-precache');
+    var rootDir = 'dist';
+  
+    swPrecache.write(path.join(rootDir, 'service-worker.js'), {
+      staticFileGlobs: [rootDir + '/**/*.{js,html,css,png,jpg,gif,json}'],
+      stripPrefix: rootDir
+    }, callback);
+    
+  });
+
+
 gulp.task(
   "default",
-  gulp.parallel(["message", "copyHTML", "imageMin", "scripts", "minify-css"])
+  gulp.parallel(["message", "copyHTML", "imageMin", "scripts", "minify-css", "generate-service-worker"])
 );
 
+
 gulp.task("watch", function() {
+  gulp.watch("public/service-worker.js", gulp.series('service-worker'))
   gulp.watch("public/js/*.js", gulp.series('scripts')),
   gulp.watch("public/images/*",gulp.series('imageMin')),
   gulp.watch("public/*.html", gulp.series('copyHTML')),
